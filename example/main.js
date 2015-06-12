@@ -20,7 +20,7 @@ var HelloWorld = _react2['default'].createClass({
       { box: true, column: true, style: { height: '100%' } },
       _react2['default'].createElement(
         _libMainJs2['default'],
-        { item: true, size: 1, style: { backgroundColor: '#ff0000' }, box: true, row: true },
+        { item: true, size: '1', style: { backgroundColor: '#ff0000' }, box: true, row: true },
         _react2['default'].createElement(
           _libMainJs2['default'],
           { item: true, size: 1, className: 'blue' },
@@ -28,7 +28,7 @@ var HelloWorld = _react2['default'].createClass({
         ),
         _react2['default'].createElement(
           _libMainJs2['default'],
-          { item: true, size: 1, className: 'blue' },
+          { item: true, size: '2', className: 'blue' },
           '2',
           _react2['default'].createElement('br', null),
           '2'

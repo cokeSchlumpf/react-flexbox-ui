@@ -7,7 +7,7 @@ const HelloWorld = React.createClass({
       <View box column style={{ height: "100%" }} >
         <View item size={ 1 } style={{ backgroundColor: "#ff0000" }} box row>
           <View item size={ 1 } className="blue">1</View>
-          <View item size={ 1 } className="blue">2<br />2</View>
+          <View item size={ 2 } className="blue">2<br />2</View>
           <View item size={ 1 } className="blue">3</View>
         </View>
         <View item size={ 2 } style={{ backgroundColor: "#00ff00" }} box row justifySpaceAround>
