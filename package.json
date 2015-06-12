@@ -1,0 +1,42 @@
+{
+  "name": "react-flexbox-ui",
+  "version": "0.0.1",
+  "description": "React implementation for Flexbox CSS.",
+  "homepage": "http://cokeschlumpf.github.io/react-flexbox-ui/",
+  "keywords": [
+    "react",
+    "ecosystem-react",
+    "react-component",
+    "flexbox"
+  ],
+  "author": "Michael Wellner <info@michaelwellner.de>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cokeSchlumpf/react-flexbox-ui.git"
+  },
+  "main": "lib/main.js",
+  "directories": {
+    "lib": "lib/"
+  },
+  "peerDependencies": {
+    "react": "0.13.x"
+  },
+  "devDependencies": {
+    "babel": "^5.5.5",
+    "babel-eslint": "^3.1.14",
+    "babel-loader": "^5.1.4",
+    "browserify": "^10.2.4",
+    "eslint": "^0.22.1",
+    "eslint-plugin-react": "^2.5.0",
+    "debug": "^2.2.0",
+    "react-hot-loader": "^1.2.7",
+    "webpack": "^1.9.10",
+    "webpack-dev-server": "^1.9.0"
+  },
+  "scripts": {
+    "prepublish": "node_modules/babel/bin/babel/index.js src/main.jsx -o lib/main.js",
+    "example": "node_modules/babel/bin/babel/index.js example/main.jsx -o example/main.tmp.js && browserify example/main.tmp.js > example/main.js && rm example/main.tmp.js",
+    "build": "npm run prepublish && npm run example"
+  }
+}

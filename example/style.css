@@ -1,0 +1,19 @@
+body, html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.footer {
+  height: 30px;
+  background-color: #0000ff;
+}
+
+.blue {
+  background-color: #0000ff;
+}
+
+.box {
+  width: 200px;
+}
