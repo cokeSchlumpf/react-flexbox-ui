@@ -40,4 +40,6 @@ Basic Syntax for items:
   <View item [size={ number }] ... />
 ```
 
-If size is set, the item will be configured with flex-grow, otherwise you should define a static height/ width with CSS. Box and item can be combined in one view. See [this page](http://css-tricks.com/snippets/css/a-guide-to-flexbox/) for more details on Flexbox CSS.
+If size is set, the item will be configured with flex-grow, otherwise you should define a static height/ width with CSS. 
+
+Box and item can be combined in one view. See [this page](http://css-tricks.com/snippets/css/a-guide-to-flexbox/) for more details on Flexbox CSS.
