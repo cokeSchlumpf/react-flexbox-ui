@@ -21,12 +21,17 @@
   },
   "devDependencies": {
     "babel": "^5.5.5",
-    "babel-plugin-object-assign": "^1.1.0",
-    "browserify": "^10.2.4"
+    "babel-eslint": "^3.1.14",
+    "babel-loader": "^5.1.4",
+    "browserify": "^10.2.4",
+    "eslint": "^0.22.1",
+    "eslint-plugin-react": "^2.5.0"
   },
   "scripts": {
-    "prepublish": "babel --plugins object-assign src/main.jsx -o lib/main.js",
-    "example": "babel --plugins object-assign example/main.jsx -o example/main.tmp.js && browserify example/main.tmp.js > example/main.js && rm example/main.tmp.js",
-    "build": "npm run prepublish && npm run example"
+    "prepublish": "node_modules/babel/bin/babel/index.js src/main.jsx -o lib/main.js",
+    "example": "node_modules/babel/bin/babel/index.js example/main.jsx -o example/main.tmp.js && browserify example/main.tmp.js > example/main.js && rm example/main.tmp.js",
+    "build": "npm run prepublish && npm run example",
+    "lint": "eslint ./src/*.jsx",
+    "test": "npm run lint"
   }
 }
