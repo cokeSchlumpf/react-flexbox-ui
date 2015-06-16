@@ -10,8 +10,8 @@ npm install --save react-flexbox-ui
 ## Example
 
 ```
-<View box row>
-  <View box column item size={ 1 }>
+<View row>
+  <View column item size={ 1 }>
     <View item size={ 1 }>A</View>
     <View item size={ 1 }>B</View>
   </View>
@@ -26,10 +26,10 @@ npm install --save react-flexbox-ui
 
 ## API
 
-Basic Syntax for box/ containers:
+Basic Syntax for containers:
 
 ```
-  <View box {column|row} [{wrap|nowrap}] [{justifyStart|justifyEnd|justifyCenter|justifySpaceBetween|justifySpaceAround}] [{alignStart|alignEnd|alignCenter|alignStretch|alignBaseline}] ... />
+  <View {column|row} [{wrap|nowrap}] [{justifyStart|justifyEnd|justifyCenter|justifySpaceBetween|justifySpaceAround}] [{alignStart|alignEnd|alignCenter|alignStretch|alignBaseline}] ... />
 ```
 
 Default is set to `wrap`, `justifySpaceBetween`, `alignStretch` if `column`, `alignCenter` if `row`. If a style property is set, it will be merged with the flexbox styles.

@@ -95,10 +95,10 @@ function cleanProps(props) {
 
 class View extends React.Component {
   render() {
-    const {style, item, box} = this.props;
+    const {style, item, row, column} = this.props;
     const composedStyle = Object.assign({},
       item ? mixItemProps(style, this.props) : {},
-      box ? mixBoxProps(style, this.props) : {});
+      row || column ? mixBoxProps(style, this.props) : {});
     const props = cleanProps(this.props);
 
     return <div {...props} style={composedStyle}>{this.props.children}</div>;

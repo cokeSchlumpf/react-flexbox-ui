@@ -17,10 +17,10 @@ var HelloWorld = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       _libMainJs2['default'],
-      { box: true, column: true, style: { height: '100%' } },
+      { column: true, style: { height: '100%' } },
       _react2['default'].createElement(
         _libMainJs2['default'],
-        { item: true, size: 1, style: { backgroundColor: '#ff0000' }, box: true, row: true },
+        { item: true, size: 1, style: { backgroundColor: '#ff0000' }, row: true },
         _react2['default'].createElement(
           _libMainJs2['default'],
           { item: true, size: 1, className: 'blue' },
@@ -41,7 +41,7 @@ var HelloWorld = _react2['default'].createClass({
       ),
       _react2['default'].createElement(
         _libMainJs2['default'],
-        { item: true, size: 2, style: { backgroundColor: '#00ff00' }, box: true, row: true, justifySpaceAround: true },
+        { item: true, size: 2, style: { backgroundColor: '#00ff00' }, row: true, justifySpaceAround: true },
         _react2['default'].createElement(
           _libMainJs2['default'],
           { item: true, className: 'blue box' },
@@ -187,9 +187,10 @@ var View = (function (_React$Component) {
       var _props = this.props;
       var style = _props.style;
       var item = _props.item;
-      var box = _props.box;
+      var row = _props.row;
+      var column = _props.column;
 
-      var composedStyle = _extends({}, item ? mixItemProps(style, this.props) : {}, box ? mixBoxProps(style, this.props) : {});
+      var composedStyle = _extends({}, item ? mixItemProps(style, this.props) : {}, row || column ? mixBoxProps(style, this.props) : {});
       var props = cleanProps(this.props);
 
       return _react2['default'].createElement(
