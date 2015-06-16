@@ -78,9 +78,9 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 });
 
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
@@ -143,11 +143,7 @@ function mixBoxProps(style, props) {
     divStyle.alignItems = 'baseline';
   }
 
-  if (props.style) {
-    return Object.assign({}, boxStyle, divStyle, props.style);
-  } else {
-    return Object.assign({}, boxStyle, divStyle);
-  }
+  return _extends({}, boxStyle, divStyle, style);
 }
 
 function mixItemProps(style, props) {
@@ -163,31 +159,14 @@ function mixItemProps(style, props) {
     divStyle.flexShrink = 0;
   }
 
-  if (props.style) {
-    return Object.assign({}, itemStyle, divStyle, props.style);
-  } else {
-    return Object.assign({}, itemStyle, divStyle);
-  }
+  return _extends({}, itemStyle, divStyle, style);
 }
 
 function cleanProps(props) {
-  var result = Object.assign({}, props);
-  delete result['style'];
-  delete result['item'];
-  delete result['box'];
-  delete result['row'];
-  delete result['column'];
-  delete result['wrap'];
-  delete result['justifyStart'];
-  delete result['justifyEnd'];
-  delete result['justifyCenter'];
-  delete result['justifySpaceBetween'];
-  delete result['justifySpaceAround'];
-  delete result['alignStart'];
-  delete result['alignEnd'];
-  delete result['alignCenter'];
-  delete result['alignStretch'];
-  delete result['alignBaseline'];
+  var result = _extends({}, props);
+  ['style', 'item', 'box', 'row', 'column', 'wrap', 'justifyStart', 'justifyEnd', 'justifyCenter', 'justifySpaceBetween', 'justifySpaceAround', 'alignStart', 'alignEnd', 'alignCenter', 'alignStretch', 'alignBaseline'].forEach(function (prop) {
+    return delete result[prop];
+  });
   return result;
 }
 
@@ -208,9 +187,9 @@ var View = (function (_React$Component) {
       var _props = this.props;
       var style = _props.style;
       var item = _props.item;
-
       var box = _props.box;
-      var composedStyle = Object.assign({}, item ? mixItemProps(style, this.props) : {}, box ? mixBoxProps(style, this.props) : {});
+
+      var composedStyle = _extends({}, item ? mixItemProps(style, this.props) : {}, box ? mixBoxProps(style, this.props) : {});
       var props = cleanProps(this.props);
 
       return _react2['default'].createElement(
@@ -223,6 +202,14 @@ var View = (function (_React$Component) {
 
   return View;
 })(_react2['default'].Component);
+
+View.propTypes = {
+  style: _react2['default'].PropTypes.object,
+  item: _react2['default'].PropTypes.any,
+  box: _react2['default'].PropTypes.any,
+  children: _react2['default'].PropTypes.node
+  // TODO: add all possible props here
+};
 
 exports['default'] = View;
 module.exports = exports['default'];
