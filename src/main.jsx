@@ -28,27 +28,27 @@ function mixBoxProps(style, props) {
   }
 
   if (props.justifyStart) {
-    divStyle.justifyContent = "flex-start";
+    divStyle.justifyContent = 'flex-start';
   } else if (props.justifyEnd) {
-    divStyle.justifyContent = "flex-end";
+    divStyle.justifyContent = 'flex-end';
   } else if (props.justifyCenter) {
-    divStyle.justifyContent = "center";
+    divStyle.justifyContent = 'center';
   } else if (props.justifySpaceBetween) {
-    divStyle.justifyContent = "space-between";
+    divStyle.justifyContent = 'space-between';
   } else if (props.justifySpaceAround) {
-    divStyle.justifyContent = "space-around";
+    divStyle.justifyContent = 'space-around';
   }
 
   if (props.alignStart) {
-    divStyle.alignItems = "flex-start";
+    divStyle.alignItems = 'flex-start';
   } else if (props.alignEnd) {
-    divStyle.alignItems = "flex-end";
+    divStyle.alignItems = 'flex-end';
   } else if (props.alignCenter) {
-    divStyle.alignItems = "center";
+    divStyle.alignItems = 'center';
   } else if (props.alignStretch) {
-    divStyle.alignItems = "stretch";
+    divStyle.alignItems = 'stretch';
   } else if (props.alignBaseline) {
-    divStyle.alignItems = "baseline";
+    divStyle.alignItems = 'baseline';
   }
 
   return Object.assign({}, boxStyle, divStyle, style);
@@ -72,33 +72,45 @@ function mixItemProps(style, props) {
 
 function cleanProps(props) {
   const result = Object.assign({}, props);
-  delete result["style"];
-  delete result["item"];
-  delete result["box"];
-  delete result["row"];
-  delete result["column"];
-  delete result["wrap"];
-  delete result["justifyStart"];
-  delete result["justifyEnd"];
-  delete result["justifyCenter"];
-  delete result["justifySpaceBetween"];
-  delete result["justifySpaceAround"];
-  delete result["alignStart"];
-  delete result["alignEnd"];
-  delete result["alignCenter"];
-  delete result["alignStretch"];
-  delete result["alignBaseline"];
+  [
+    'style',
+    'item',
+    'box',
+    'row',
+    'column',
+    'wrap',
+    'justifyStart',
+    'justifyEnd',
+    'justifyCenter',
+    'justifySpaceBetween',
+    'justifySpaceAround',
+    'alignStart',
+    'alignEnd',
+    'alignCenter',
+    'alignStretch',
+    'alignBaseline'
+  ].forEach(prop => delete result[prop]);
   return result;
 }
 
-export default class View extends React.Component {
+class View extends React.Component {
   render() {
-    const { style, item, box } = this.props;
+    const {style, item, box} = this.props;
     const composedStyle = Object.assign({},
       item ? mixItemProps(style, this.props) : {},
       box ? mixBoxProps(style, this.props) : {});
     const props = cleanProps(this.props);
 
-    return <div { ...props } style={ composedStyle }>{this.props.children}</div>;
+    return <div {...props} style={composedStyle}>{this.props.children}</div>;
   }
 }
+
+View.propTypes = {
+  style: React.PropTypes.object,
+  item: React.PropTypes.any,
+  box: React.PropTypes.any,
+  children: React.PropTypes.node
+  // TODO: add all possible props here
+};
+
+export default View;
