@@ -17,7 +17,7 @@ var HelloWorld = _react2['default'].createClass({
   render: function render() {
     return _react2['default'].createElement(
       _libMainJs2['default'],
-      { column: true, style: { height: '100%' } },
+      { column: true, expand: true },
       _react2['default'].createElement(
         _libMainJs2['default'],
         { item: true, size: 1, style: { backgroundColor: '#ff0000' }, row: true },
@@ -41,7 +41,7 @@ var HelloWorld = _react2['default'].createClass({
       ),
       _react2['default'].createElement(
         _libMainJs2['default'],
-        { item: true, size: 2, style: { backgroundColor: '#00ff00' }, row: true, justifySpaceAround: true },
+        { item: true, size: '2', style: { backgroundColor: '#00ff00' }, row: true, justifySpaceAround: true },
         _react2['default'].createElement(
           _libMainJs2['default'],
           { item: true, className: 'blue box' },
@@ -62,7 +62,7 @@ var HelloWorld = _react2['default'].createClass({
       ),
       _react2['default'].createElement(
         _libMainJs2['default'],
-        { item: true, className: 'footer' },
+        { item: true, className: 'footer', componentClass: 'footer' },
         'Footer'
       )
     );
@@ -108,6 +108,11 @@ var itemStyle = {
 function mixBoxProps(style, props) {
   var divStyle = {};
 
+  if (props.expand) {
+    divStyle.width = '100%';
+    divStyle.height = '100%';
+  }
+
   if (props.row) {
     divStyle.flexDirection = 'row';
     divStyle.alignItems = 'center';
@@ -149,7 +154,7 @@ function mixBoxProps(style, props) {
 function mixItemProps(style, props) {
   var divStyle = {};
 
-  if (typeof props.size === 'number') {
+  if (!isNaN(props.size * 1)) {
     divStyle.flexGrow = props.size;
     divStyle.flexShrink = 0;
     divStyle.flexBasis = 0;
@@ -164,7 +169,7 @@ function mixItemProps(style, props) {
 
 function cleanProps(props) {
   var result = _extends({}, props);
-  ['style', 'item', 'box', 'row', 'column', 'wrap', 'justifyStart', 'justifyEnd', 'justifyCenter', 'justifySpaceBetween', 'justifySpaceAround', 'alignStart', 'alignEnd', 'alignCenter', 'alignStretch', 'alignBaseline'].forEach(function (prop) {
+  ['style', 'item', 'box', 'row', 'column', 'wrap', 'justifyStart', 'justifyEnd', 'justifyCenter', 'justifySpaceBetween', 'justifySpaceAround', 'alignStart', 'alignEnd', 'alignCenter', 'alignStretch', 'alignBaseline', 'componentClass', 'expand'].forEach(function (prop) {
     return delete result[prop];
   });
   return result;
@@ -192,9 +197,10 @@ var View = (function (_React$Component) {
 
       var composedStyle = _extends({}, item ? mixItemProps(style, this.props) : {}, row || column ? mixBoxProps(style, this.props) : {});
       var props = cleanProps(this.props);
+      var ComponentClass = this.props.componentClass;
 
       return _react2['default'].createElement(
-        'div',
+        ComponentClass,
         _extends({}, props, { style: composedStyle }),
         this.props.children
       );
@@ -208,8 +214,12 @@ View.propTypes = {
   style: _react2['default'].PropTypes.object,
   item: _react2['default'].PropTypes.any,
   box: _react2['default'].PropTypes.any,
-  children: _react2['default'].PropTypes.node
-  // TODO: add all possible props here
+  children: _react2['default'].PropTypes.node,
+  componentClass: _react2['default'].PropTypes.node
+};
+
+View.defaultProps = {
+  componentClass: 'div'
 };
 
 exports['default'] = View;

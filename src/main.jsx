@@ -16,6 +16,11 @@ const itemStyle = {
 function mixBoxProps(style, props) {
   const divStyle = {};
 
+  if (props.expand) {
+    divStyle.width = '100%';
+    divStyle.height= '100%';
+  }
+
   if (props.row) {
     divStyle.flexDirection = 'row';
     divStyle.alignItems = 'center';
@@ -57,7 +62,7 @@ function mixBoxProps(style, props) {
 function mixItemProps(style, props) {
   const divStyle = {};
 
-  if (typeof props.size === 'number') {
+  if (!isNaN(props.size * 1)) {
     divStyle.flexGrow = props.size;
     divStyle.flexShrink = 0;
     divStyle.flexBasis = 0;
@@ -88,7 +93,9 @@ function cleanProps(props) {
     'alignEnd',
     'alignCenter',
     'alignStretch',
-    'alignBaseline'
+    'alignBaseline',
+    'componentClass',
+    'expand'
   ].forEach(prop => delete result[prop]);
   return result;
 }
@@ -100,8 +107,9 @@ class View extends React.Component {
       item ? mixItemProps(style, this.props) : {},
       row || column ? mixBoxProps(style, this.props) : {});
     const props = cleanProps(this.props);
+    const ComponentClass = this.props.componentClass;
 
-    return <div {...props} style={composedStyle}>{this.props.children}</div>;
+    return <ComponentClass {...props} style={composedStyle}>{this.props.children}</ComponentClass>;
   }
 }
 
@@ -109,8 +117,12 @@ View.propTypes = {
   style: React.PropTypes.object,
   item: React.PropTypes.any,
   box: React.PropTypes.any,
-  children: React.PropTypes.node
-  // TODO: add all possible props here
+  children: React.PropTypes.node,
+  componentClass: React.PropTypes.node
 };
+
+View.defaultProps = {
+  componentClass: 'div'
+}
 
 export default View;
