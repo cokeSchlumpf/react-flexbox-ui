@@ -101,7 +101,7 @@ function cleanProps(props) {
 }
 
 export default React.createClass({
-  propTypes {
+  propTypes: {
     style: React.PropTypes.object,
     item: React.PropTypes.any,
     box: React.PropTypes.any,
@@ -109,8 +109,10 @@ export default React.createClass({
     componentClass: React.PropTypes.node
   },
 
-  defaultProps: {
-    componentClass: 'div'
+  getDefaultProps() {
+    return {
+      componentClass: 'div'
+    }
   },
 
   render() {

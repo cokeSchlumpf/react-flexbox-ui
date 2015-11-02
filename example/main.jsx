@@ -1,5 +1,8 @@
+import ReactDOM from 'react-dom';
 import React from 'react';
 import View from '../lib/main.js';
+
+console.log(View);
 
 const HelloWorld = React.createClass({
   render() {
@@ -21,4 +24,6 @@ const HelloWorld = React.createClass({
   }
 });
 
-React.render(<HelloWorld />, document.body);
+console.log(HelloWorld);
+
+ReactDOM.render(<HelloWorld />, document.getElementById("app"));

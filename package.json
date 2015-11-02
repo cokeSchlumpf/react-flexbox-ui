@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox-ui",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "React implementation for Flexbox CSS.",
   "homepage": "http://cokeschlumpf.github.io/react-flexbox-ui/",
   "keywords": [
@@ -24,7 +24,8 @@
     "babel-plugin-object-assign": "^1.1.0",
     "browserify": "^10.2.4",
     "eslint": "^0.22.1",
-    "eslint-plugin-react": "^2.5.0"
+    "eslint-plugin-react": "^2.5.0",
+    "react-dom": "^0.14.0"
   },
   "scripts": {
     "prepublish": "babel --plugins object-assign src/main.jsx -o lib/main.js",
