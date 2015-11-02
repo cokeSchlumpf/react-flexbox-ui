@@ -100,7 +100,19 @@ function cleanProps(props) {
   return result;
 }
 
-class View extends React.Component {
+export default React.createClass({
+  propTypes {
+    style: React.PropTypes.object,
+    item: React.PropTypes.any,
+    box: React.PropTypes.any,
+    children: React.PropTypes.node,
+    componentClass: React.PropTypes.node
+  },
+
+  defaultProps: {
+    componentClass: 'div'
+  },
+
   render() {
     const {style, item, row, column} = this.props;
     const composedStyle = Object.assign({},
@@ -111,18 +123,4 @@ class View extends React.Component {
 
     return <ComponentClass {...props} style={composedStyle}>{this.props.children}</ComponentClass>;
   }
-}
-
-View.propTypes = {
-  style: React.PropTypes.object,
-  item: React.PropTypes.any,
-  box: React.PropTypes.any,
-  children: React.PropTypes.node,
-  componentClass: React.PropTypes.node
-};
-
-View.defaultProps = {
-  componentClass: 'div'
-}
-
-export default View;
+});

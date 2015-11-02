@@ -1,6 +1,6 @@
 {
   "name": "react-flexbox-ui",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "React implementation for Flexbox CSS.",
   "homepage": "http://cokeschlumpf.github.io/react-flexbox-ui/",
   "keywords": [
@@ -17,7 +17,7 @@
   },
   "main": "lib/main.js",
   "peerDependencies": {
-    "react": "0.13.x"
+    "react": "0.14.x"
   },
   "devDependencies": {
     "babel": "^5.5.5",
