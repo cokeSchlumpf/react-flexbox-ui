@@ -25,9 +25,12 @@
     "browserify": "^10.2.4",
     "eslint": "^0.22.1",
     "eslint-plugin-react": "^2.5.0",
+    "npm-check-updates": "^2.3.4",
     "react-dom": "^0.14.0"
   },
   "scripts": {
+    "cu": "ncu",
+    "cuu": "ncu -u --upgradeAll",
     "prepublish": "babel --plugins object-assign src/main.jsx -o lib/main.js",
     "example": "babel --plugins object-assign example/main.jsx -o example/main.tmp.js && browserify example/main.tmp.js > example/main.js && rm example/main.tmp.js",
     "build": "npm run prepublish && npm run example",
