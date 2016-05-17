@@ -19,6 +19,8 @@ function mixBoxProps(style, props) {
   if (props.expand) {
     divStyle.width = '100%';
     divStyle.height= '100%';
+    divSytle.minWidth = '0';
+    divStyle.minHeight = '0';
   }
 
   if (props.row) {
